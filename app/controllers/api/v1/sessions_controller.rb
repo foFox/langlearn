@@ -17,6 +17,14 @@ class Api::V1::SessionsController < ApplicationController
 		end
 	end
 
+	def destroy
+		token = current_api_session_token
+		token.delete
+		cookies[:session_token] = nil
+		session[:user_id] = nil
+		respond("message", "logged out", 200)
+	end
+
 	private 
 
 	def has_valid_password

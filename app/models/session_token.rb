@@ -5,8 +5,7 @@ class SessionToken < ActiveRecord::Base
 
 	def initialize()
 		super()
-		self.token_string = SecureRandom.urlsafe_base64(nil, false)
-		self.last_seen = Time.now
+		self.token_string = SecureRandom.urlsafe_base64(nil, false)		
 		return self
 	end
 
@@ -19,9 +18,9 @@ class SessionToken < ActiveRecord::Base
 	end
 
 	def ttl
-		return TTL unless last_seen
-		elapsed = DateTime.now - last_seen
-    	remaining = (TTL - elapsed).floor
+		return TTL unless created_at
+		elapsed = (Time.zone.now - created_at) / 60
+    	remaining = ((TTL.to_i / 60) - elapsed).floor    	
     	remaining > 0 ? remaining : 0
 	end
 end

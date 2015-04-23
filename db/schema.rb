@@ -35,11 +35,10 @@ ActiveRecord::Schema.define(version: 20150423051650) do
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "session_tokens", force: :cascade do |t|
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
     t.string   "token_string", limit: 255
     t.integer  "user_id",      limit: 4
-    t.date     "last_seen"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "session_tokens", ["token_string"], name: "index_session_tokens_on_token_string", using: :btree
@@ -52,7 +51,6 @@ ActiveRecord::Schema.define(version: 20150423051650) do
     t.string   "surname",       limit: 255
     t.string   "email_address", limit: 255
     t.string   "password_hash", limit: 255
-    t.string   "hash_salt",     limit: 255
     t.string   "user_type",     limit: 7
   end
 

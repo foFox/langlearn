@@ -5,8 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :surname
       t.string :email_address
-      t.string :password_hash
-      t.string :hash_salt
+      t.string :password_hash      
       t.column :user_type, "ENUM('student','tutor')"
     end
   end
