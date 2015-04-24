@@ -4,9 +4,13 @@ Rails.application.routes.draw do
     	namespace :v1 do
       		resource :sessions 
       		resources :users
-      		resources :langauges
+      		resources :languages do
+            resources :users, :controller => 'languages/users'
+          end
       		resources :conversations     
-      		resources :me 
+      		resource :me do      			
+      			resources :languages, :controller => "me/languages"
+      		end
     	end
   	end
 

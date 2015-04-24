@@ -1,12 +1,9 @@
 class Api::V1::LanguagesController < ApplicationController
+	
+	before_filter :check_if_user_is_tutor
+
 	def index 
 		@languages = Language.all		
-	end
-
-	def create
-		@language = Language.new
-		@language.name = params[:name]
-		@language.save
 	end
 
 	def update
@@ -15,8 +12,10 @@ class Api::V1::LanguagesController < ApplicationController
 		@language.save
 	end
 
-	def delete
-		@language = Language.find(params[:id])
-		@langauge.delete
+	#validation
+
+	def check_if_user_is_tutor
+		current_user.user_type == 'tutor'
 	end
+
 end

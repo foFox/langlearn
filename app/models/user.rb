@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	has_many :session_tokens
 	has_many :conversations
+  has_and_belongs_to_many :languages
 
 	validates_presence_of   :name,		   	on: :create
 	validates_presence_of   :surname,   	on: :create
