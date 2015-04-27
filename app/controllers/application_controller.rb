@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, :with => :not_found
   rescue_from ActiveRecord::RecordInvalid, :with => :record_invalid
   rescue_from ActionController::RoutingError, :with => :route_not_found
-
+  rescue_from Apipie::ParamMissing, :with => :parameter_mssing
   def routing_error    
     raise ActionController::RoutingError.new(params[:path])
   end
@@ -55,6 +55,10 @@ class ApplicationController < ActionController::Base
 
   def route_not_found(message = "route not found")
     respond("message", "route #{request.method_symbol.to_s.upcase} #{message.to_s} not found",404)
+  end
+
+  def parameter_mssing(message = "parameter missing")
+    respond("message", "#{message}",422)
   end
 
   #responses

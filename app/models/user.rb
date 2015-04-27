@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :session_tokens
-	has_many :conversations
+	has_many :conversations  
   has_and_belongs_to_many :languages
 
 	validates_presence_of   :name,		   	on: :create
@@ -13,4 +13,12 @@ class User < ActiveRecord::Base
   	def password=(secret)
     	write_attribute(:password_hash, BCrypt::Password.create(secret))
   	end
+
+    def conversations
+        if user_type == 'student' then
+          Conversation.find_by_student_id(id)
+        else
+          Conversation.find_by_tutor_id(id)
+        end
+    end    
 end

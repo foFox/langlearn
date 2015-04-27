@@ -23,7 +23,7 @@ class Api::V1::SessionsController < ApplicationController
 		if params[:email_address] and has_valid_password then
 			token = SessionToken.new
 			token.user = @user		
-			token.save		
+			token.save!		
 			cookies[:session_token] = token.token_string
 			session[:user_id] = @user.id
 			respond("token", token.token_string, 200)

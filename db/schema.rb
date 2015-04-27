@@ -14,8 +14,12 @@
 ActiveRecord::Schema.define(version: 20150423051650) do
 
   create_table "conversations", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.integer  "student_id",  limit: 4
+    t.integer  "tutor_id",    limit: 4
+    t.string   "state",       limit: 8
+    t.integer  "language_id", limit: 4
   end
 
   create_table "languages", force: :cascade do |t|
@@ -33,10 +37,11 @@ ActiveRecord::Schema.define(version: 20150423051650) do
   add_index "languages_users", ["user_id"], name: "index_languages_users_on_user_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "user_id",         limit: 4
     t.integer  "conversation_id", limit: 4
+    t.string   "text",            limit: 255
   end
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree

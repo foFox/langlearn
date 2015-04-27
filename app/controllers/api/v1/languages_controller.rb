@@ -21,7 +21,7 @@ class Api::V1::LanguagesController < ApplicationController
 	def update
 		@language = Language.find(params[:id])
 		@language.name = params[:name] unless params[:name].nil?
-		@language.save
+		@language.save!
 	end
 
 	#validation

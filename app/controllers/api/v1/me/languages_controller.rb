@@ -20,7 +20,7 @@ class Api::V1::Me::LanguagesController < ApplicationController
 		end
 
 		current_user.languages << @language
-		current_user.save
+		current_user.save!
 	end
 
 	api :DELETE, '/me/languages/:id', 'remove the language from the tutor taught languges - must be logged in as tutor, if no more tutors teach that language - the language itself is removed from the system'
@@ -31,7 +31,7 @@ class Api::V1::Me::LanguagesController < ApplicationController
 		current_user.languages.delete(@language)
 		current_user.save
 		if @language.users.empty? then
-			@language.delete
+			@language.delete!
 		end
 	end
 
