@@ -10,14 +10,14 @@ class Api::V1::Conversations::MessagesController < ApplicationController
 	before_filter :check_if_current_user
 
 	api :GET, '/conversations/:id/messages', 'list all messages from a conversation with id - currently logged in user must be tutor or student of that conversation'
-	param :id, String, :desc => "identifier of the conversation", :required => "true"
+	param :id, String, :desc => "identifier of the conversation", :required => false
 
 	def index
 		@messages = Conversation.find(params[:conversation_id]).messages
 	end
 
 	api :POST, '/conversations/:id/messages', 'create a new message for conversation with id - currently logged in user must be tutor or student of that conversation'
-	param :id, String, :desc => "identifier of the conversation", :required => "true"
+	param :id, String, :desc => "identifier of the conversation", :required => false
 	param :text, String, :desc => "contents of the message", :required => "true"
 
 	def create

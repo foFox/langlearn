@@ -9,7 +9,7 @@ class Api::V1::Me::LanguagesController < ApplicationController
 	end
 
 	api :POST, '/me/languages', 'create a new language taught by the tutor - must be logged in as tutor'
-	param :name, String, :desc => "name of the language", :required => "true"
+	param :name, String, :desc => "name of the language", :required => false
 
 	def create
 		@language = Language.find_by_name(params[:name])
@@ -24,7 +24,7 @@ class Api::V1::Me::LanguagesController < ApplicationController
 	end
 
 	api :DELETE, '/me/languages/:id', 'remove the language from the tutor taught languges - must be logged in as tutor, if no more tutors teach that language - the language itself is removed from the system'
-	param :id, String, :desc => "identifier of the language", :required => "true"
+	param :id, String, :desc => "identifier of the language", :required => false
 
 	def destroy
 		@language = Language.find(params[:id])
