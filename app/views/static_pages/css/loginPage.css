@@ -1,0 +1,24 @@
+
+#loginPage
+{
+  position: relative;
+ 
+  top: 20%;
+  left: 20%;
+
+  height: 60%;
+  width: 60%;
+
+  background-color: black;
+}
+
+#loginPage #login
+{
+
+}
+
+#loginPage #register
+{
+
+}
+

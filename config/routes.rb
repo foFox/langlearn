@@ -1,5 +1,8 @@
 Rails.application.routes.draw do	
 
+  root "static_pages#home"
+  get "page/:file_name", to: "static_pages#page"
+
   apipie
   	namespace :api do
     	namespace :v1 do
