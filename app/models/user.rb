@@ -18,9 +18,9 @@ class User < ActiveRecord::Base
 
     def conversations
         if user_type == 'student' then
-          Conversation.find_by_student_id(id)
+          Conversation.where('student_id = ?', id)
         else
-          Conversation.find_by_tutor_id(id)
+          Conversation.where('tutor_id = ?', id)
         end
     end    
 end

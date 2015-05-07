@@ -32,7 +32,7 @@ describe Api::V1::Conversations::MessagesController, type: :controller do
 			conversation = create(:conversation)
 			session = create(:session, user: conversation.tutor)
 			cookies[:session_token] = session.token_string
-			get :index, {:conversation_id => conversation.id}
+			get :index, {:conversation_id => conversation.id}			
 			expect(JSON.parse(response.body)['messages'][0]['text']).to eq("Hi")			
 		end
 

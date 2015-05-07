@@ -57,10 +57,16 @@ FactoryGirl.define do
     state "new"
     after(:build) do |conversation|
       conversation.language = conversation.tutor.languages[0]
-      message = Message.new
-      message.text = "Hi"
-      message.user = conversation.tutor
-      conversation.messages << message
+      
+      message1 = Message.new
+      message1.text = "Hi"
+      message1.user = conversation.tutor
+      conversation.messages << message1
+
+      message2 = Message.new
+      message2.text = "Where are you?"
+      message2.user = conversation.tutor
+      conversation.messages << message2
     end
   end
 

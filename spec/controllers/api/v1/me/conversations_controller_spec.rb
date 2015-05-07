@@ -24,7 +24,7 @@ describe Api::V1::Me::ConversationsController, type: :controller do
 			session = create(:session, {:user => conversation.student})
 			cookies[:session_token] = session.token_string
 			get :index			
-			expect(JSON.parse(response.body)['conversations']['id']).to eq(conversation.id)
+			expect(JSON.parse(response.body)['conversations'][0]['id']).to eq(conversation.id)
 		end
 
 		it 'returns list of covnersations if user is a tutor' do
@@ -32,7 +32,15 @@ describe Api::V1::Me::ConversationsController, type: :controller do
 			session = create(:session, {:user => conversation.tutor})
 			cookies[:session_token] = session.token_string
 			get :index			
-			expect(JSON.parse(response.body)['conversations']['id']).to eq(conversation.id)
+			expect(JSON.parse(response.body)['conversations'][0]['id']).to eq(conversation.id)
+		end
+
+		it 'shows all conversations' do
+			conversation = create(:conversation)
+			session = create(:session, {:user => conversation.student})
+			cookies[:session_token] = session.token_string
+			get :index					
+			expect(JSON.parse(response.body)['conversations'].count).to eq(1)
 		end
 
 	end
@@ -114,6 +122,5 @@ describe Api::V1::Me::ConversationsController, type: :controller do
 			post(:create, {:tutor_id => tutor.id})
 			expect(response).to have_http_status(422)
 		end
-
 	end
 end

@@ -13,7 +13,7 @@ class Api::V1::Me::ConversationsController < ApplicationController
 	api :GET, '/me/conversations', 'list all conversations user is currently engaged in'
 
 	def index		
-		@conversations = current_user.conversations
+		@conversations = current_user.conversations		
 	end
 
 	api :POST, '/me/conversations', 'create a new conversation with a tutor - must be logged in as a student'
