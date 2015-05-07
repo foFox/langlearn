@@ -47,12 +47,20 @@ FactoryGirl.define do
     name "English"
   end
 
+  factory :spanish_language, class: Language do
+    name "Spanish"
+  end
+
   factory :conversation, class: Conversation do
     association :tutor, :factory => :tutor
     association :student, :factory => :student
     state "new"
     after(:build) do |conversation|
       conversation.language = conversation.tutor.languages[0]
+      message = Message.new
+      message.text = "Hi"
+      message.user = conversation.tutor
+      conversation.messages << message
     end
   end
 

@@ -60,7 +60,7 @@ class Api::V1::Conversations::MessagesController < ApplicationController
 
 	def check_if_current_user
 		conversation = Conversation.find(params[:conversation_id])
-		conversation.student == current_user or conversation.tutor == current_user
+		not_authorized unless (conversation.student == current_user or conversation.tutor == current_user)
 	end
 
 end

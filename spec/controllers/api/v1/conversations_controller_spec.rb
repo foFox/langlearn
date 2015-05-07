@@ -8,28 +8,29 @@ describe Api::V1::ConversationsController, type: :controller do
 
 		it 'deletes the conversation if current user is tutor' do
 			conversation = create(:conversation)
-			session = create(:session_tutor, user: conversation.tutor)
+			session = create(:session, user: conversation.tutor)
 			cookies['session_token'] =  session.token_string
 			delete :destroy, { :id => conversation.id }
 			expect{ Conversation.find(conversation.id) }.to raise_error(ActiveRecord::RecordNotFound)
 		end
 
 
-		it 'deletes the conversation if current user is student' do
+		it 'deletes the conversation if current user is a student' do
 			conversation = create(:conversation)
-			session = create(:session_tutor, user: create(:other_user))
+			session = create(:session, user: conversation.student)
 			cookies['session_token'] =  session.token_string
 			delete :destroy, { :id => conversation.id }
-			expect(response).to have_http_status(401)
+			expect{ Conversation.find(conversation.id) }.to raise_error(ActiveRecord::RecordNotFound)
+			expect(response).to have_http_status(200)
 		end
 
 
 		it 'does not delete the conversation if current user is not invoved in the conversation' do
 			conversation = create(:conversation)
-			session = create(:session_tutor, user: conversation.tutor)
+			session = create(:session_tutor, user: create(:other_user))
 			cookies['session_token'] =  session.token_string
 			delete :destroy, { :id => conversation.id }
-			expect{ Conversation.find(conversation.id) }.to raise_error(ActiveRecord::RecordNotFound)
+			expect{ Conversation.find(conversation.id) }.not_to raise_error			
 		end
 
 		it 'responds with correct status code if successful' do

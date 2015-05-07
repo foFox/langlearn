@@ -1,2 +1,2 @@
 collection @users, :root => 'users', :object_root => ''
-attributes :id, :name, :surname, :email_address
+attributes :id, :name, :surname, :email_address, :user_type

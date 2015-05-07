@@ -42,6 +42,6 @@ class Api::V1::Me::ConversationsController < ApplicationController
 	#validation
 
 	def check_if_user_is_student
-		current_user.user_type == 'student'
+		not_authorized unless current_user.user_type == 'student'
 	end
 end
