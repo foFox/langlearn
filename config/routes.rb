@@ -9,7 +9,9 @@ Rails.application.routes.draw do
             resources :users, :controller => 'languages/users', only: [:index]
           end
       		resources :conversations, only: [] do
-            resources :messages, :controller => 'conversations/messages',only: [:index, :create]
+            resources :messages, :controller => 'conversations/messages',only: [:index, :create] do
+              collection { get :events }
+            end
           end             
           resources :me, :controller => "me", only: [:index]
       		resource :me, only: [] do      			
