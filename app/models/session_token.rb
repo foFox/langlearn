@@ -1,5 +1,8 @@
 class SessionToken < ActiveRecord::Base
 	belongs_to :user
+
+	validates :user, :presence => true
+	validates :token_string, :presence => true
 	
 	TTL = 20.minutes
 

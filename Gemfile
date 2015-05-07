@@ -27,6 +27,11 @@ gem 'bcrypt'
 gem 'rabl'
 gem 'oj'
 gem 'apipie-rails', '0.3.3'
+gem 'puma'
+gem 'rails-erd'
+gem 'rspec-rails', '~> 3.2.0'
+gem "factory_girl_rails", "~> 4.0"
+gem 'database_cleaner'
 
 gem 'therubyracer'
 gem 'execjs'

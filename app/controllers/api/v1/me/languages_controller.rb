@@ -10,13 +10,18 @@ class Api::V1::Me::LanguagesController < ApplicationController
 
 	api :POST, '/me/languages', 'create a new language taught by the tutor - must be logged in as tutor'
 	param :name, String, :desc => "name of the language", :required => false
+	param :language_id, String, :desc => "id of the language", :required => false
 
 	def create
-		@language = Language.find_by_name(params[:name])
-		if @language.nil? then
-			@language = Language.new
-			@language.name = params[:name]
-			@language.save		
+		if not params[:name].nil? then
+			@language = Language.find_by_name(params[:name])
+			if @language.nil? then
+				@language = Language.new
+				@language.name = params[:name]
+				@language.save!		
+			end
+		else
+			@language = Language.find(params[:language_id])
 		end
 
 		current_user.languages << @language
@@ -31,14 +36,14 @@ class Api::V1::Me::LanguagesController < ApplicationController
 		current_user.languages.delete(@language)
 		current_user.save
 		if @language.users.empty? then
-			@language.delete!
+			@language.delete
 		end
 	end
 
 	#validation
 
 	def check_if_user_is_tutor
-		current_user.user_type == 'tutor'
+		not_authorized unless current_user.user_type == 'tutor'
 	end
 
 end

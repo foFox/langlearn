@@ -13,7 +13,7 @@ class Api::V1::Me::ConversationsController < ApplicationController
 	api :GET, '/me/conversations', 'list all conversations user is currently engaged in'
 
 	def index		
-		@conversations = current_user.conversations
+		@conversations = current_user.conversations		
 	end
 
 	api :POST, '/me/conversations', 'create a new conversation with a tutor - must be logged in as a student'
@@ -34,7 +34,7 @@ class Api::V1::Me::ConversationsController < ApplicationController
 			language = Language.find_by_name(params[:language_name])
 		end
 		
-		@conversation.language = language  #if User.find(params[:tutor_id]).languages.include?(language)		
+		@conversation.language = language 
 		@conversation.save!
 	end
 
@@ -42,6 +42,6 @@ class Api::V1::Me::ConversationsController < ApplicationController
 	#validation
 
 	def check_if_user_is_student
-		current_user.user_type == 'student'
+		not_authorized unless current_user.user_type == 'student'
 	end
 end
