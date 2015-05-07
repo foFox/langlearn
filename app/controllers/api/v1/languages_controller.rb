@@ -15,8 +15,8 @@ class Api::V1::LanguagesController < ApplicationController
 	end
 
 	api :PUT, '/languages/:id', 'update languge with specific id - must be logged in as tutor'
-	param :id, String, :desc => "identifier of the language", :required => "true"
-	param :name, String, :desc => "updated name of the language", :required => "true"
+	param :id, String, :desc => "identifier of the language", :required => false
+	param :name, String, :desc => "updated name of the language", :required => true
 
 	def update
 		@language = Language.find(params[:id])
@@ -27,7 +27,7 @@ class Api::V1::LanguagesController < ApplicationController
 	#validation
 
 	def check_if_user_is_tutor
-		current_user.user_type == 'tutor'
+		not_authorized unless current_user.user_type == 'tutor'
 	end
 
 end

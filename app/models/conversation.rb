@@ -1,6 +1,7 @@
 class Conversation < ActiveRecord::Base
 
 	validate :validate_student_and_tutor
+	validate :validate_language
 	validates_presence_of  :student, 	on: :create
 	validates_presence_of  :tutor, 		on: :create
 	validates_presence_of  :language, 	on: :create
@@ -16,13 +17,21 @@ class Conversation < ActiveRecord::Base
 	def validate_student_and_tutor
 		if !student.nil? then
 			if student.user_type != 'student' then
-				errors.add(:student, "type of the user set as student is not student")
+				errors.add(:student, " - type of the user set as student is not student")
 			end
 		end
 
 		if !tutor.nil? then
 			if tutor.user_type != 'tutor' then
-				errors.add(:student, "type of the user set as tutort is not tutor")
+				errors.add(:tutor, " - type of the user set as tutor is not tutor")
+			end
+		end
+	end
+
+	def validate_language
+		if !language.nil? then
+			if !tutor.languages.include?(language) then
+				errors.add(:language, " - language of the conversation is not taught by the tutor")
 			end
 		end
 	end

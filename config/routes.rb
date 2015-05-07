@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       		resources :languages, only: [:index, :update] do
             resources :users, :controller => 'languages/users', only: [:index]
           end
-      		resources :conversations, only: [] do
+      		resources :conversations, only: [:destroy] do
             resources :messages, :controller => 'conversations/messages',only: [:index, :create] do
               collection { get :events }
             end

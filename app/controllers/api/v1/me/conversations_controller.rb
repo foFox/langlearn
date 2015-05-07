@@ -34,7 +34,7 @@ class Api::V1::Me::ConversationsController < ApplicationController
 			language = Language.find_by_name(params[:language_name])
 		end
 		
-		@conversation.language = language  #if User.find(params[:tutor_id]).languages.include?(language)		
+		@conversation.language = language 
 		@conversation.save!
 	end
 

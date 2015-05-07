@@ -40,14 +40,14 @@ class Api::V1::Conversations::MessagesController < ApplicationController
 		start =  Time.zone.now
 		conversation = Conversation.find(params[:conversation_id])
 
-		600.times do |number|
+		3600.times do 
 			Message.uncached do
 				Message.where('created_at > ? and conversation_id = ?', start, conversation.id).each do |message|
-					response.stream.write "{\"data\": #{message.to_json}"
+					response.stream.write "{\"data\": #{message.to_json}}"
 					start = message.created_at
 				end		
 			end
-			sleep 1
+			sleep(1)
 		end
 
 	rescue IOError 	
