@@ -14,11 +14,96 @@
 
 #loginPage #login
 {
+  position: relative;
+  
+  top: 5%;
+  left: 7%;
 
+  width: 45%;
+  height: 90%;
+
+  background-color: white;
+
+  float: left;
 }
 
 #loginPage #register
 {
+  position: relative;
 
+  top: 5%;
+  left: 3%;
+
+  width: 45%;
+  height: 90%;
+
+  background-color: white;
+
+  float: left;
+}
+
+#loginPage #register table
+{
+  position: absolute;
+  
+  top: 5%;
+  left: 3%;
+
+  height: 70%;
+  width: 94%;
+
+  clear: both;
+}
+
+#loginPage #login table
+{
+  position: absolute;
+  
+  top: 25%;
+  left: 3%;
+
+  height: 25%;
+  width: 94%;
+
+  clear: both;
+}
+
+#loginPage #register #submitRegister
+{
+  position: absolute;
+
+  top: 85%;
+  left: 25%;
+
+  width: 50%;
+  height: 10%;
+
+  background-color: black;
+  cursor: pointer;
+
+  text-align: center;
+  color: white;
+}
+
+#loginPage #login #submitLogin
+{
+  position: absolute;
+
+  top: 60%;
+  left: 25%;
+
+  width: 50%;
+  height: 10%;
+
+  background-color: black;
+  cursor: pointer;
+
+  text-align: center;
+  color: white;
+}
+
+.error
+{
+  border: solid 2px #FF0000;
 }
 

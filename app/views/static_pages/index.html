@@ -6,15 +6,16 @@
   <head>
     <link href="page/animate.css" rel="stylesheet" type="text/css">
     <link href="page/global.css" rel="stylesheet" type="text/css">
-    
+   
+    <!-- Page-specific CSS --> 
     <link href="page/loginPage.css" rel="stylesheet" type="text/css">
 
     <!-- Javascript Libraries -->
     <script src="page/jquery.js"></script>
+    <script src="page/listeners.js"></script> 
 
     <!-- Global Javascript files -->
     <script src="page/globals.js"></script>
-    <script src="page/listeners.js"></script> 
 
     <!-- Model-oriented Javascript -->
     <script src="page/profiles.js"></script>
@@ -31,14 +32,71 @@
   <body>
     <div id="background"></div>
 
-    <div id="container" class="animated fadeInUp">
-      
-      <div id="loginPage">
-        <div id="register"></div>
-        <div id="login"></div>
+    <div id="container" class="animated">
+     
+      <div id="header"></div>
+ 
+      <div id="loginPage" class="animated fadeInUp">
+        <div id="register" class="animated">
+          <table>
+            <tr>
+              <td>Email</td>
+              <td><input type="text" name="regEmail"></td>
+            </tr>
+            <tr>
+              <td>First Name</td>
+              <td><input type="text" name="regName"></td>
+            </tr>
+            <tr>
+              <td>Last Name</td>
+              <td><input type="text" name="regSurname"></td>
+            </tr>
+            <tr>
+              <td>Student</td>
+              <td><input type="radio" name="role" value="student"></td>
+            </tr>
+            <tr>
+              <td>Tutor</td>
+              <td><input type="radio" name="role" value="tutor"></td>
+            </tr>
+            <tr>
+              <td>Password</td>
+              <td><input type="password" name="regPassword1"></td>
+            </tr>
+            <tr>
+              <td>Repeat Password</td>
+              <td><input type="password" name="regPassword2"></td>
+            </tr>
+          </table>
+          <div id="submitRegister">Register</div>
+        </div>
+        
+        <div id="login" class="animated">
+          <table>
+            <tr>
+              <td>Email</td>
+              <td><input type="text" name="logEmail"></td>
+            </tr>
+            <tr>
+              <td>Password</td>
+              <td><input type="password" name="logPassword"></td>
+            </tr>
+          </table>
+          <div id="submitLogin">Login</div>
+        </div>
       </div> 
+
+      <div id="conversationPage" class="animated">
+      </div>
+
+      <div id="tutorPage" class="animated">
+      </div>
+
+      <div id="profilePage" class="animated">
+      </div>
     
     </div>
+ 
   </body>
 
 </html>
