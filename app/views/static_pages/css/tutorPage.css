@@ -1,0 +1,16 @@
+
+#tutorHomePage
+{
+  display: none; 
+
+  position: relative;
+
+  top: 10%;
+  left: 5%;
+
+  height: 80%;
+  width: 90%;
+
+  background-color: blue;
+}
+

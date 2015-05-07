@@ -1,0 +1,60 @@
+
+.leftPane
+{
+  position: absolute;
+
+  top: 2%;
+  left: 2%;
+
+  width: 13%;
+  height: 96%;
+
+  float: left;
+
+  background-color: yellow;
+}
+
+.rightPane
+{
+  position: absolute;
+
+  top: 2%;
+  left: 17%;
+  right: 2%;
+
+  width: 81%;
+  height: 96%;
+
+  float: right;
+
+  background-color: white;
+}
+
+.rightPane .inbox
+{
+  position: relative;
+
+  top: 0%;
+  right: 0%;
+
+  height: 100%;
+  width: 49%;
+  float: left;
+
+  background-color: green;
+}
+
+.rightPane .conversation
+{
+  position: relative;
+
+  top: 0%;
+  left: 2%;
+
+  height: 100%;
+  width: 49%;
+  float: left;
+
+  background-color: red;
+}
+

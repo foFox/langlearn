@@ -8,7 +8,7 @@ class Api::V1::Languages::UsersController < ApplicationController
 	before_filter :check_if_user_student
 
 	api :GET, '/languages/:id/users', 'list all tutors who can teach the language with specified id - must be logged in as student'
-	param :id, String, :desc => "identifier of the language", :required => "true"
+	param :id, String, :desc => "identifier of the language", :required => false
 
 	def index
 		language = Language.find(params[:language_id])

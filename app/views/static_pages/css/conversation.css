@@ -1,0 +1,24 @@
+
+#conversationHeader
+{
+  position: relative;
+
+  height: 25%;
+  clear: both;
+}
+
+#messages
+{
+  position: relative;
+
+  height: 50%;
+  width: 100%;
+  clear: both;
+}
+
+#message
+{
+  width: 100%;
+  box-sizing: border-box;
+}
+

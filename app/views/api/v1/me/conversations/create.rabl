@@ -1,4 +1,4 @@
-object @conversation => :conversaton
+object @conversation => :conversation
 attributes :id, :state
 
 child :student => :student do

@@ -1,0 +1,55 @@
+
+#studentHomePage
+{
+  display: none; 
+
+  position: relative;
+
+  top: 10%;
+  left: 5%;
+
+  height: 80%;
+  width: 90%;
+
+  background-color: white;
+}
+
+.tutor
+{
+  display: relative;
+
+  margin: 1%;
+  height: 20%;
+
+  width: 98%;
+  cursor: pointer;
+
+  color: white;
+  background-color: black;
+  clear: both;
+}
+
+.tutor .languageList
+{
+  display: relative;
+
+  margin: 1%;
+  height: 50%;
+
+  width: 98%;
+  overflow: auto;
+}
+
+.tutor .languageList .language
+{
+  display: relative;
+
+  margin: 1%;
+
+  height: 50%;
+  width: 98%;
+
+  clear: both;
+  background-color: pink;
+}
+

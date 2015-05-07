@@ -6,9 +6,14 @@
   <head>
     <link href="page/animate.css" rel="stylesheet" type="text/css">
     <link href="page/global.css" rel="stylesheet" type="text/css">
-   
+    <link href="page/effects.css" rel="stylesheet" type="text/css">  
+ 
     <!-- Page-specific CSS --> 
     <link href="page/loginPage.css" rel="stylesheet" type="text/css">
+    <link href="page/chat.css" rel="stylesheet" type="text/css">
+    <link href="page/conversation.css" rel="stylesheet" type="text/css">
+    <link href="page/studentPage.css" rel="stylesheet" type="text/css">
+    <link href="page/tutorPage.css" rel="stylesheet" type="text/css">
 
     <!-- Javascript Libraries -->
     <script src="page/jquery.js"></script>
@@ -18,10 +23,12 @@
     <script src="page/globals.js"></script>
 
     <!-- Model-oriented Javascript -->
-    <script src="page/profiles.js"></script>
-    <script src="page/languages.js"></script>
-    <script src="page/conversations.js"></script>
     <script src="page/messages.js"></script>
+    <script src="page/conversations.js"></script>
+    <script src="page/languages.js"></script>
+    <script src="page/studentHome.js"></script>
+    <script src="page/tutorHome.js"></script>
+    <script src="page/profiles.js"></script>
 
     <!-- Startup Javascript calls -->
     <script src="page/startup.js"></script>
@@ -32,8 +39,9 @@
   <body>
     <div id="background"></div>
 
-    <div id="container" class="animated">
+    <div id="container" class="animated effect7">
      
+      <div id="backgroundText">Language Study</div>
       <div id="header"></div>
  
       <div id="loginPage" class="animated fadeInUp">
@@ -85,6 +93,30 @@
           <div id="submitLogin">Login</div>
         </div>
       </div> 
+
+      <div id="tutorHomePage" class="animated">
+        <div class="leftPane" id="languageAdder"></div>
+        <div class="rightPane">
+          <div class="inbox"></div>
+          <div class="conversation">
+            <div id="conversationHeader"></div> 
+            <div id="messages"></div>
+            <textarea id="message" rows=2></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div id="studentHomePage" class="animated">
+        <div class="leftPane" id="tutorList"></div>
+        <div class="rightPane">
+          <div class="inbox"></div>
+          <div class="conversation">
+            <div id="conversationHeader"></div>
+            <div id="messages"></div>
+            <textarea id="message" rows=2></textarea>
+          </div>
+        </div>
+      </div>
 
       <div id="conversationPage" class="animated">
       </div>
